@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Sprint3.Models.ComportamentoNegocios>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container mt-4">
+    <h1>Comportamento de Negócios</h1>
+
+    <p>
+        <a class="btn btn-primary" asp-action="Create">Adicionar Novo</a>
+    </p>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Interações na Plataforma</th>
+                    <th scope="col">Frequência de Uso</th>
+                    <th scope="col">Feedback</th>
+                    <th scope="col">Uso de Recursos Específicos</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.InteracoesPlataforma</td>
+                        <td>@item.FrequenciaUso</td>
+                        <td>@item.Feedback</td>
+                        <td>@item.UsoRecursosEspecificos</td>
+                        <td>
+                            <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                            <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
